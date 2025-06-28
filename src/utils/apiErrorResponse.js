@@ -2,7 +2,7 @@ import codes from "../constants/statusCodes.js";
 
 export default class ApiErrorResponse extends Error {
   constructor(
-    message = "Some err occured when fetching api",
+    message = "Some error occured when fetching api",
     code = codes.badRequest,
     payload = {},
     err = null
