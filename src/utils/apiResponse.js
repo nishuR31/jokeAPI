@@ -1,4 +1,4 @@
-import codes from "../constants/statusCodes";
+import codes from "../constants/statusCodes.js";
 
 export default class ApiResponse {
   constructor(
@@ -6,7 +6,7 @@ export default class ApiResponse {
     code = codes.ok,
     payload = {}
   ) {
-    super(message);
+    this.message = message;
     this.name = this.constructor.name;
     this.payload = payload;
     this.code = code;

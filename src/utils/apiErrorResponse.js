@@ -4,7 +4,7 @@ export default class ApiErrorResponse extends Error {
   constructor(
     message = "Some error occured when fetching api",
     code = codes.badRequest,
-    payload = {},
+    payload = { message: "No payload passed" },
     err = null
   ) {
     super(err?.message || message);
