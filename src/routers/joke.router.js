@@ -5,24 +5,25 @@ import codes from "../constants/statusCodes.js";
 import Joke from "../models/joke.model.js";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import ApiResponse from "../utils/apiResponse.js";
-
+import mongoose from "mongoose";
 let jokeRouter = express.Router();
 
 jokeRouter.get(
   "/joke", //tags=tag tags=tag&tags=tag
   asyncHandler(async (req, res) => {
     let tags = req.query.tags;
-    let tagList =
-      Array.isArray(tags) ? tags
-      : tags ? [tags]
-      : [];
+    let tagList = Array.isArray(tags) ? tags : tags ? [tags] : [];
 
     if (isEmpty(tagList)) {
       return res
         .status(codes.badRequest)
         .json(new ApiErrorResponse("Tag is empty", codes.badRequest).res());
     }
-    let joke = await Joke.findOne({ tags: { $in: tagList } });
+    let joke = await Joke.aggregate([
+      { $match: { tags: { $in: tagList } } },
+      { $sample: { size: 1 } },
+      { $project: { __v: 0, createdAt: 0, updatedAt: 0 } },
+    ]);
     if (!joke) {
       return res
         .status(codes.notFound)
@@ -31,29 +32,36 @@ jokeRouter.get(
 
     return res.status(codes.ok).json(
       new ApiResponse("Joke fetched successfully", codes.ok, {
-        joke: joke.joke,
-        tags: joke.tags,
-        rating: joke.rating,
+        joke: joke,
       }).res()
     );
   })
 );
+//     return res.status(codes.ok).json(
+//       new ApiResponse("Joke fetched successfully", codes.ok, {
+//         joke: joke.joke,
+//         tags: joke.tags,
+//         rating: joke.rating,
+//       }).res()
+//     );
+//   })
+// );
 
 jokeRouter.get(
   "/jokes", //tags=tag || tags=tag&tags=tag
   asyncHandler(async (req, res) => {
     let tags = req.query.tags;
-    let tagList =
-      Array.isArray(tags) ? tags
-      : tags ? [tags]
-      : [];
+    let tagList = Array.isArray(tags) ? tags : tags ? [tags] : [];
 
     if (isEmpty(tagList)) {
       return res
         .status(codes.badRequest)
         .json(new ApiErrorResponse("Tag is empty", codes.badRequest).res());
     }
-    let jokes = await Joke.find({ tags: { $in: tagList } });
+    let jokes = await Joke.aggregate([
+      { $match: { tags: { $in: tagList } } },
+      { $project: { __v: 0, createdAt: 0, updatedAt: 0 } },
+    ]);
     if (!jokes || isEmpty([jokes])) {
       return res
         .status(codes.notFound)
@@ -251,6 +259,47 @@ jokeRouter.get(
         }
       ).res()
     );
+  })
+);
+
+jokeRouter.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    let id =req.params.id;
+    if (isEmpty([id])) {
+      return res
+        .status(codes.badRequest)
+        .json(new ApiErrorResponse("ID is required", codes.badRequest).res());
+    }
+
+    // if (mongoose.Types.ObjectId.isValid(id)) {
+    //   return res
+    //     .status(codes.badRequest)
+    //     .json(
+    //       new ApiErrorResponse("Invalid ID format", codes.badRequest).res()
+    //     );
+    // }
+    let joke = await Joke.aggregate([
+      { $match: { _id: { $in: [id] } } },
+      { $sample: { size: 1 } },
+      { $project: { __v: 0, createdAt: 0, updatedAt: 0 } },
+    ]);
+    if (isEmpty([joke])) {
+      return res
+        .status(codes.notFound)
+        .json(
+          new ApiErrorResponse("Joke not found", codes.notFound, {
+            id: id,
+          }).res()
+        );
+    }
+    return res
+      .status(codes.ok)
+      .json(
+        new ApiResponse(`Joke with  ${id} found successfully`, codes.ok, {
+          joke: joke,
+        }).res()
+      );
   })
 );
 
