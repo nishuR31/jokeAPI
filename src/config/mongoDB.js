@@ -1,14 +1,18 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config({ path: "../../.env" });
-let mongoUri = process.env.MONGO_URI;
-let connectDb = async () => {
+
+const connectDB = async (mongoUri) => {
+  if (!mongoUri) {
+    console.error("Mongo URI is missing in environment variables.");
+    process.exit(1); // Stop the server if no DB URI
+  }
   try {
-    let connect = await mongoose.connect(mongoUri);
-    console.log(`Mongo Db successfully connected..`);
+    await mongoose.connect(mongoUri);
+
+    console.log("MongoDB connected successfully");
   } catch (err) {
-    console.log(`Error connecting to mongoDB:${err}`);
+    console.error(`Error connecting to MongoDB: ${err.message}`);
+    process.exit(1); // Stop the server on DB error
   }
 };
 
-export default connectDb;
+export default connectDB;

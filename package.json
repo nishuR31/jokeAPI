@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx nodemon src/index.js",
-    "start": "npx nodemon src/config/app.js"
+    "start": "node src/config/app.js",
+    "dev0": "node --watch src/config/app.js"
   },
   "author": "nishan nishant",
   "license": "ISC",

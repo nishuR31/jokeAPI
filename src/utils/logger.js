@@ -5,6 +5,7 @@ let logger = (req, res, next) => {
     url: req.host + req.url,
     time: new Date().toLocaleString(),
     param: req.params,
+    query: req.query,
     rateLimit: res.req.rateLimit,
     ms: res.getHeader("X-Response-Time") || "N/A", // use header if response time tracking is enabled
   });

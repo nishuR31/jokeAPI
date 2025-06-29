@@ -54,7 +54,7 @@ jokeRouter.get(
         .json(new ApiErrorResponse("Tag is empty", codes.badRequest).res());
     }
     let jokes = await Joke.find({ tags: { $in: tagList } });
-    if (!jokes || isEmpty(jokes)) {
+    if (!jokes || isEmpty([jokes])) {
       return res
         .status(codes.notFound)
         .json(new ApiErrorResponse("Joke not found", codes.notFound).res());
@@ -71,13 +71,13 @@ jokeRouter.get(
 jokeRouter.get(
   "/tags",
   asyncHandler(async (req, res) => {
-    let tagAggr = Joke.aggregate([
+    let tagAggr = await Joke.aggregate([
       { $unwind: "$tags" },
       { $group: { _id: null, tagList: { $addToSet: "$tags" } } },
       { $project: { _id: 0, tagList: 1 } },
     ]);
 
-    let tags = tagAggr[0]?.tagList || [];
+    const tags = tagAggr[0]?.tagList || [];
     if (isEmpty(tags)) {
       return res
         .status(codes.notFound)

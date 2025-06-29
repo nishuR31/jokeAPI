@@ -1,15 +1,12 @@
 import express from "express";
 import cors from "cors";
 import expressLimit from "express-rate-limit";
-import dotenv from "dotenv";
 import logger from "../utils/logger.js";
 import jokeApiRoute from "../routes/joke.route.js";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import codes from "../constants/statusCodes.js";
 import ApiResponse from "../utils/apiResponse.js";
 import password from "../utils/password.js";
-dotenv.config({ path: "../../.env" });
-let port = process.env.PORT || 3000;
 
 const baseRoute = "/api/v1";
 
@@ -26,11 +23,11 @@ app.use(limit);
 app.use(cors());
 app.use(logger);
 
-app.get("/", (req, res) => {
+app.get(baseRoute, (req, res) => {
   res.send("Server fired up");
 });
 
-app.get("/.env", (req, res) => {
+app.get(`${baseRoute}/.env`, (req, res) => {
   return res.status(codes.ok).json(
     new ApiResponse("Env fetching", codes.ok, {
       processEnv: [process.env.MONGO_URI, process.env.PORT],
@@ -40,10 +37,11 @@ app.get("/.env", (req, res) => {
 
 app.use(baseRoute, jokeApiRoute);
 
-app.listen(port, async () => {
-  await password();
-  console.log(`http://localhost:${port}\nServer fired up`);
-});
+// app.listen(port);
+// app.listen(port, () => {
+//   // await password();
+//   console.log(`Server fired up in: http://localhost:${port}`);
+// });
 
 app.use((err, req, res, next) => {
   return res
@@ -58,4 +56,4 @@ app.use((err, req, res, next) => {
     );
 });
 
-// export default app;
+export default app;

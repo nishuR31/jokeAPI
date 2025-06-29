@@ -6,7 +6,7 @@ export default async function password() {
 
   let chances = 3;
   while (chances > 0) {
-    const entered = await rl.question("Enter password (HHMM): ");
+    const entered = await rl.question("Enter password : ");
 
     const now = new Date();
     const currentTime1 = `${now.getHours() < 10 ? "0" : ""}${now.getHours()}${now.getMinutes() < 10 ? "0" : ""}${now.getMinutes()}`;
