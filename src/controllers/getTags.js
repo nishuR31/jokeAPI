@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import codes from "../constants/statusCodes.js";
 import Joke from "../models/joke.model.js";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
