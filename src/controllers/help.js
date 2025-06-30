@@ -3,7 +3,7 @@ import codes from "../constants/statusCodes.js";
 
 import asyncHandler from "../utils/asyncHandler.js";
 
-
+let baseRoute="/api/v1";
 let help=asyncHandler(async (req, res) => {
     return res.status(codes.ok).send(`<!doctype html>
 <html lang="en">
@@ -36,7 +36,7 @@ let help=asyncHandler(async (req, res) => {
           Homepage Route
         </h2>
         <p class="text-gray-300">
-          <span class="font-semibold">Home page:</span>
+          <span class="font-semibold">Home page with base route:</span>
           <a
             href="/api/v1"
             class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
@@ -44,7 +44,9 @@ let help=asyncHandler(async (req, res) => {
             <code>/api/v1</code>
           </a>
             <br>
-        <a
+   <p class="text-gray-300">
+          <span class="font-semibold">Home page:</span>
+          <a
             href="/"
             class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
           >
@@ -63,66 +65,66 @@ let help=asyncHandler(async (req, res) => {
           <div>
             <span>- Get a joke by tags</span> • <strong>GET</strong>:
             <a
-              href="/joke-api/joke?tags=tag1&tags=tag2"
+              href="${baseRoute}/joke-api/joke?tags=tag1&tags=tag2"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/joke?tags=tag1&amp;tags=tag2
+              ${baseRoute}/joke-api/joke?tags=tag1&amp;tags=tag2
             </a>
           </div>
           <div>
             <span>- Get all jokes with optional tags</span> •
             <strong>GET</strong>:
             <a
-              href="/joke-api/jokes?tags=tag1&tagNames=tag2"
+              href="${baseRoute}/joke-api/jokes?tags=tag1&tagNames=tag2"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/jokes?tags=tag1&amp;tagNames=tag2
+              ${baseRoute}/joke-api/jokes?tags=tag1&amp;tagNames=tag2
             </a>
           </div>
           <div>
             <span>- Get all tags</span> •
             <strong>GET</strong>:
             <a
-              href="/joke-api/tags"
+              href="${baseRoute}/joke-api/tags"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/tags
+              ${baseRoute}/joke-api/tags
             </a>
           </div>
           <div>
             <span>- Get joke by ID</span> • <strong>GET</strong>:
             <a
-              href="/joke-api/:id"
+              href="${baseRoute}/joke-api/:id"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/:id
+              ${baseRoute}/joke-api/:id
             </a>
           </div>
           <div>
             <span>- Submit a new joke</span> • <strong>POST</strong>:
             <a
-              href="/joke-api/joke"
+              href="${baseRoute}/joke-api/joke"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/joke
+              ${baseRoute}/joke-api/joke
             </a>
           </div>
           <div>
             <span>- Delete a joke by ID</span> • <strong>DELETE</strong>:
             <a
-              href="/joke-api/:id/delete"
+              href="${baseRoute}/joke-api/:id/delete"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/:id/delete
+              ${baseRoute}/joke-api/:id/delete
             </a>
           </div>
           <div>
             <span>- Edit a joke by ID</span> • <strong>PUT</strong>:
             <a
-              href="/joke-api/:id/edit"
+              href="${baseRoute}/joke-api/:id/edit"
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
-              /joke-api/:id/edit
+              ${baseRoute}/joke-api/:id/edit
             </a>
           </div>
         </div>
@@ -157,7 +159,7 @@ let help=asyncHandler(async (req, res) => {
         <pre
           class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] p-3 to-transparent rounded shadow hover:shadow-white/20 transition border-none rounded p-4 text-sm overflow-x-auto text-gray-100"
         >
-        <code>GET /joke-api/jokes?page=2&limit=10</code></pre>
+        <code>GET ${baseRoute}/joke-api/jokes?page=2&limit=10</code></pre>
         <p class="text-gray-400 mt-2">
           This returns the second page of jokes with 10 items per page.
         </p>
