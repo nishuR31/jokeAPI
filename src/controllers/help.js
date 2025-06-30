@@ -42,9 +42,12 @@ let help=asyncHandler(async (req, res) => {
             class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
           >
             <code>/api/v1</code>
-          </a>
+          </a>         
+            – Shows welcome or API root page.
+        </p>
+
             <br>
-   <p class="text-gray-300">
+         <p class="text-gray-300">
           <span class="font-semibold">Home page:</span>
           <a
             href="/"
