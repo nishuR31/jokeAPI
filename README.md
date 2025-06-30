@@ -15,7 +15,7 @@ A lightweight and fun REST API to manage and fetch jokes. Built with **Express.j
 
 - click below to go to the website
   
-[![https://nishu-apijoke.vercel.app](https://img.shields.io/badge/Joke%20Api-black?style=social&logo=vercel)](https://nishu-apijoke.vercel.app)
+[![https://nishu-jokeapi.vercel.app](https://img.shields.io/badge/Joke%20Api-black?style=social&logo=vercel)](https://nishu-jokeapi.vercel.app)
 
 <br>
 <hr>
