@@ -5,8 +5,6 @@ import logger from "../utils/logger.js";
 import jokeApiRoute from "../routes/joke.route.js";
 import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import codes from "../constants/statusCodes.js";
-import ApiResponse from "../utils/apiResponse.js";
-import password from "../utils/password.js";
 import helpRoute from "../routes/help.route.js";
 
 const baseRoute = "/api/v1";
@@ -27,7 +25,6 @@ app.use(logger);
 app.get(baseRoute, (req, res) => {
   res.send("Server fired up");
 });
-
 
 app.use(baseRoute, jokeApiRoute);
 app.use(baseRoute, helpRoute);
