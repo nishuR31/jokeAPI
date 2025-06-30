@@ -25,16 +25,19 @@ A lightweight and fun REST API to manage and fetch jokes. Built with **Express.j
 
 ## 📁 Endpoints & Routes
 
-| Method | Route                                 | Description                       |
-| ------ | ------------------------------------- | --------------------------------- |
-| GET    | `/joke-api/joke?tags=tag1[&tags=tag2]`  | Get random joke by tags           |
-| GET    | `/joke-api/jokes?tags=tag1[&tags=tag2]` | Get all jokes by tags  |
-| GET    | `/joke-api/tags` | Get all tags needed to find jokes  |
-| GET    | `/joke-api/id/:id`                       | Get a joke by its ID              |
-| POST   | `/joke-api/joke`                      | Submit a new joke                 |
-| PUT    | `/joke-api/:id/edit`                  | Edit a joke by ID                 |
-| DELETE | `/joke-api/:id/delete`                | Delete a joke by ID               |
-| GET | `/joke-api/jokes?page=X&limit=X`                | Get all jokes by tags (paginated) with number in X              |
+| Method | Route                                           | Description                                       |
+| ------ | ----------------------------------------------- | --------------------------------------------------|
+| GET    | `/`                                             | Server start                                      |
+| GET    | `/api/v1/`                                      | Base starting route                               |
+| GET    | `/api/v1/joke-api/joke?tags=tag1[&tags=tag2]`   | Get random joke by tags                           |
+| GET    | `/api/v1/joke-api/jokes?tags=tag1[&tags=tag2]`  | Get all jokes by tags                             |
+| GET    | `/api/v1/joke-api/tags`                         | Get all tags needed to find jokes                 |
+| GET    | `/api/v1/api/v1/joke-api/id/:id`                | Get a joke by its ID                              |
+| POST   | `/api/v1/joke-api/joke`                         | Submit a new joke                                 |
+| PUT    | `/api/v1/joke-api/:id/edit`                     | Edit a joke by ID                                 |
+| DELETE | `/api/v1/joke-api/:id/delete`                   | Delete a joke by ID                               |
+| GET    | `/api/v1/joke-api/jokes?page=X&limit=X`         | Get all jokes by tags (paginated) with number in X|
+| GET    | `/api/v1/help`                                  | Get all route info in ui help                     |
 
 <br>
 <hr>
