@@ -26,13 +26,14 @@ app.use(logger);
 app.get(baseRoute, (req, res) => {
   res.send("Server from base route fired up");
 });
-app.use("/", (req,res)=>{
-  res.send("Server fired up");
-});
 
 app.use(baseRoute, jokeApiRoute);
 app.use(baseRoute, helpRoute);
 
+
+app.use("/", (req,res)=>{
+  res.send("Server fired up");
+});
 app.use((err, req, res, next) => {
   return res
     .status(codes.badRequest)

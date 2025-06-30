@@ -8,9 +8,9 @@ const port = process.env.PORT || 4000;
 const mongoUri = process.env.MONGO_URI;
 
 async function fireUp() {
-  await connectDB(mongoUri);
+  // await connectDB(mongoUri);
   app.listen(port, () => {
-    console.log(`🚀 Server is live at: http://localhost:${port}/${baseUrl}`);
+    console.log(`🚀 Server is live at: http://localhost:${port}${baseRoute}`);
   });
 }
 

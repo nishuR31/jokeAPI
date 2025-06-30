@@ -1,12 +1,9 @@
 import express from "express";
-import asyncHandler from "../utils/asyncHandler.js";
-import codes from "../constants/statusCodes.js";
-import help from "../routes/help.router.js";
+
+import help from "../controllers/help.js";
 
 
 let helpRoute = express.Router();
-helpRoute.get(
-  "/",help
-);
+helpRoute.get("/help",help);
 
 export default helpRoute;
