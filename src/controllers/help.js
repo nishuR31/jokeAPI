@@ -43,6 +43,13 @@ let help=asyncHandler(async (req, res) => {
           >
             <code>/api/v1</code>
           </a>
+            <br>
+        <a
+            href="/"
+            class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
+          >
+            <code>/</code>
+          </a>
           – Shows welcome or API root page.
         </p>
       </section>
@@ -70,6 +77,16 @@ let help=asyncHandler(async (req, res) => {
               class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
             >
               /joke-api/jokes?tags=tag1&amp;tagNames=tag2
+            </a>
+          </div>
+          <div>
+            <span>- Get all tags</span> •
+            <strong>GET</strong>:
+            <a
+              href="/joke-api/tags"
+              class="inline-block ml-2 bg-gradient-to-r from-transparent via-[#ffffff44] px-3 to-transparent px-3 py-1 rounded shadow hover:shadow-white/20 transition"
+            >
+              /joke-api/tags
             </a>
           </div>
           <div>
