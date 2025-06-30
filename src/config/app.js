@@ -28,13 +28,6 @@ app.get(baseRoute, (req, res) => {
   res.send("Server fired up");
 });
 
-app.get(`${baseRoute}/.env`, (req, res) => {
-  return res.status(codes.ok).json(
-    new ApiResponse("Env fetching", codes.ok, {
-      processEnv: [process.env.MONGO_URI, process.env.PORT],
-    }).res()
-  );
-});
 
 app.use(baseRoute, jokeApiRoute);
 app.use(baseRoute, helpRoute);
