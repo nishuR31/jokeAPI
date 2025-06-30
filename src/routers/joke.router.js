@@ -230,7 +230,7 @@ jokeRouter.get(
     let page = parseInt(req.query.page) || 1;
     let limit = parseInt(req.query.limit);
     let size = (page - 1) * limit;
-    let jokes = await Joke.aggregate([{ $skip: size }, { $limit: limit }]);
+    let jokes = await Joke.aggregate([{ $skip: size }, { $limit: limit },{$project:{__v:0,createdAt:0,updatedAt:0}}]);
     let jokesAggr = await Joke.aggregate([{ $count: "joke" }]);
     let totalJokes = jokesAggr[0]?.joke || 0;
     let totalPages = Math.ceil(totalJokes / limit);
