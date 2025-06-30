@@ -4,6 +4,8 @@ import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import ApiResponse from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import isEmpty from "../utils/isEmpty.js";
+import mongoose from "mongoose";
+
 
 let deleteJoke = asyncHandler(async (req, res) => {
   const id = req.params.id;

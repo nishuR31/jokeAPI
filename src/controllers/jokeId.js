@@ -4,6 +4,7 @@ import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import ApiResponse from "../utils/apiResponse.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import isEmpty from "../utils/isEmpty.js";
+import mongoose from "mongoose";
 
 let jokeId = asyncHandler(async (req, res) => {
   let id = req.params.id;

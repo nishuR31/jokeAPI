@@ -22,18 +22,13 @@ app.use(limit);
 app.use(cors());
 app.use(logger);
 
+
 app.get(baseRoute, (req, res) => {
   res.send("Server fired up");
 });
 
 app.use(baseRoute, jokeApiRoute);
 app.use(baseRoute, helpRoute);
-
-// app.listen(port);
-// app.listen(port, () => {
-//   // await password();
-//   console.log(`Server fired up in: http://localhost:${port}`);
-// });
 
 app.use((err, req, res, next) => {
   return res
