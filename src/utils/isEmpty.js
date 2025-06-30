@@ -5,3 +5,4 @@ export default function isEmpty(arr) {
   return arr.some((ele) => !ele?.length || !ele);
   // return arr.some(ele=>!ele?.length)
 }
+

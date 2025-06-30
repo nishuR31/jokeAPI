@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import required from "../utils/required.js";
 
-const allowedTags = ["nsfw", "sfw", "dad", "knock-knock"];
+const allowedTags = ["nsfw", "sfw", "dad", "knock-knock","incest"];
 
 const jokeSchema = new mongoose.Schema(
   {

@@ -7,6 +7,7 @@ import ApiErrorResponse from "../utils/apiErrorResponse.js";
 import codes from "../constants/statusCodes.js";
 import ApiResponse from "../utils/apiResponse.js";
 import password from "../utils/password.js";
+import helpRoute from "../routes/help.route.js";
 
 const baseRoute = "/api/v1";
 
@@ -36,6 +37,7 @@ app.get(`${baseRoute}/.env`, (req, res) => {
 });
 
 app.use(baseRoute, jokeApiRoute);
+app.use(baseRoute, helpRoute);
 
 // app.listen(port);
 // app.listen(port, () => {
