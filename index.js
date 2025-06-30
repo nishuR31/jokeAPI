@@ -3,14 +3,14 @@ configDotenv({ path: "./.env" });
 
 import app from "./src/config/app.js";
 import connectDB from "./src/config/mongoDB.js";
-
+const baseRoute = "/api/v1";
 const port = process.env.PORT || 4000;
 const mongoUri = process.env.MONGO_URI;
 
 async function fireUp() {
   await connectDB(mongoUri);
   app.listen(port, () => {
-    console.log(`🚀 Server is live at: http://localhost:${port}`);
+    console.log(`🚀 Server is live at: http://localhost:${port}/${baseUrl}`);
   });
 }
 
