@@ -28,7 +28,7 @@ app.get(baseRoute, (req, res) => {
 });
 
 app.use(baseRoute, jokeApiRoute);
-app.use(baseRoute, helpRoute);
+app.use("/", helpRoute);
 
 app.use((err, req, res, next) => {
   return res
