@@ -1,9 +1,9 @@
 
 # Joke API
 
-![Issues](https://img.shields.io/github/issues/nishuR31/jokeAPI?color=yellow&style=flat-square)
-![Deploy](https://img.shields.io/badge/Deployed-black?logo=vercel&style=flat-square)
-![Made With](https://img.shields.io/badge/Express.js-black?style=flat-square&logo=express)
+![Issues](https://img.shields.io/github/issues/nishuR31/jokeAPI?color=yellow&style=social)
+![Deploy](https://img.shields.io/badge/Paused-black?logo=vercel&style=flat-square)
+![Made With](https://img.shields.io/badge/Express.js-black?style=social&logo=express)
 ![Repo Size](https://img.shields.io/github/repo-size/nishuR31/jokeAPI?color=black&label=Repo%20Size&style=social&logo=github&logoColor=black)
 
 
